@@ -217,7 +217,13 @@ document.addEventListener('DOMContentLoaded', async function () {
             pagination: "local", // Enable pagination
             paginationSize: 15, // Number of rows per page
             columns: [
-                {title: "ID", field: "id", sorter: "number", headerFilter: true},
+                {title: "ID", field: "id", sorter: "number", headerFilter: true,
+                formatter: function(cell, formatterParams, onRendered){
+                    var value = cell.getValue();
+                    return `<a href="https://leetcode.com/discuss/compensation/${value}" target="_blank">${value}</a>`;
+                }
+
+                },
                 {title: "Creation Date", field: "creation_date", sorter: "date", headerFilter: true},
                 {title: "Company", field: "company", sorter: "string", headerFilter: true},
                 {title: "Role", field: "role", sorter: "string", headerFilter: true},
